@@ -663,6 +663,7 @@ AddonManager::add_installed_archive(const std::string& archive, const std::strin
   }
   else
   {
+    bool has_error = false;
     std::string os_path = FileSystem::join(realdir, archive);
 
     PHYSFS_mount(os_path.c_str(), nullptr, 1);
@@ -672,6 +673,7 @@ AddonManager::add_installed_archive(const std::string& archive, const std::strin
     if (nfo_filename.empty())
     {
       log_warning << "Couldn't find .nfo file for " << os_path << std::endl;
+      has_error = true;
     }
     else
     {
@@ -704,10 +706,11 @@ AddonManager::add_installed_archive(const std::string& archive, const std::strin
       catch (const std::runtime_error& e)
       {
         log_warning << "Could not load add-on info for " << archive << ": " << e.what() << std::endl;
+        has_error = true;
       }
     }
 
-    if(!user_install)
+    if(!user_install || (user_install && has_error))
     {
       PHYSFS_unmount(os_path.c_str());
     }
