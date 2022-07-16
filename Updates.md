@@ -1,6 +1,6 @@
 # Security Policy
 
-## Supported Versions
+## Up-to-date versions
 
 Use this section to tell people about which versions of your project are
 currently being supported with security updates.
@@ -9,7 +9,7 @@ currently being supported with security updates.
 | ------- | ------------------ |
 |   Nightlys.x   | :white_check_mark: |
 | 0.6 3.x   | :white_check_mark: |
-| < 0.10 below   | :x:                |
+| < 0.6 3.x below   | :x:                |
 
 ## Reporting a Vulnerability
 
